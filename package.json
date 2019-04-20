@@ -1,6 +1,6 @@
 {
   "name": "reapex-plugin-modal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "reapex modal plugin",
   "main": "lib/index.js",
   "scripts": {
@@ -28,6 +28,7 @@
     "react": "~16.8.6",
     "react-dom": "~16.8.6",
     "reapex": "0.2.9",
+    "reselect": "^4.0.0",
     "ts-jest": "^24.0.1",
     "ts-loader": "~4.2.0",
     "tslint": "~5.9.1",
