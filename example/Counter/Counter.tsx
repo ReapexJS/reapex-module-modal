@@ -33,4 +33,6 @@ const CounterComponent: React.SFC<CounterComponentProps> = props => {
   )
 }
 
-app.register('counter', connect(null, mapDispatchToProps)(CounterComponent))
+const CounterComponentMemo = React.memo(CounterComponent)
+
+app.register('counter', connect(null, mapDispatchToProps)(CounterComponentMemo))

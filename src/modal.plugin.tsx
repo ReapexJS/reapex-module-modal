@@ -45,7 +45,7 @@ const plugin = (app: App, namespace: string = '@@modal') => {
     return (
       <div className="reapex-modals">
         {props.modals.map(m => {
-          return m.show ? React.createElement(m.component, { ...m.props, show: props.show, hide: props.hide }) : null
+          return m.show ? <m.component key={m.name} { ...m.props } show={props.show} hide={props.hide} /> : null
         })}
       </div>
     )
