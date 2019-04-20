@@ -16,4 +16,5 @@ const modal = modalPlugin(app, '@@modals')
 
 // show/hide any component
 store.dispatch(modal.mutation.show('modal1', SomeComponent, props))
+store.dispatch(modal.mutation.hide('modal1'))
 ```
