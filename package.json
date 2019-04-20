@@ -4,7 +4,9 @@
   "description": "reapex modal plugin",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "./node_modules/.bin/tsc --outDir lib --declaration",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,7 @@
     "jest-enzyme": "^7.0.2",
     "react": "~16.8.6",
     "react-dom": "~16.8.6",
-    "reapex": "0.2.8",
+    "reapex": "0.2.9",
     "ts-jest": "^24.0.1",
     "ts-loader": "~4.2.0",
     "tslint": "~5.9.1",

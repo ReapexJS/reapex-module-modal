@@ -2,7 +2,7 @@ import React from 'react'
 import { App } from 'reapex'
 import { connect } from 'react-redux'
 
-interface ModalConfig {
+export interface ModalConfig {
   name: string
   show: boolean
   component: React.ComponentType<any>
