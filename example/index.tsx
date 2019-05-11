@@ -1,6 +1,6 @@
 import React from 'react'
 
-import app from './app'
+import app, { modal } from './app'
 import { Registered } from 'reapex'
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -10,7 +10,7 @@ render(
   <Provider store={store}>
     <div>
       <Registered name="counter" lazy={() => import('./Counter/Counter')} />
-      <Registered name="@@modals" />
+      <modal.Component />
     </div>
   </Provider>,
   document.getElementById('root')

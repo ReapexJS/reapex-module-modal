@@ -34,7 +34,7 @@
     "react": "~16.8.6",
     "react-dom": "~16.8.6",
     "react-redux": "~5.1.0",
-    "reapex": "0.2.9",
+    "reapex": "0.5.1",
     "reselect": "^4.0.0",
     "ts-jest": "^24.0.1",
     "ts-loader": "~4.2.0",
@@ -45,7 +45,9 @@
     "webpack-dev-middleware": "~3.1.2"
   },
   "dependencies": {},
-  "peerDependencies": {},
+  "peerDependencies": {
+    "reapex": ">= 0.5.1"
+  },
   "author": "Yulong Ruan <ruanyu1@gmail.com>",
   "license": "MIT",
   "bugs": {

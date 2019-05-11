@@ -15,26 +15,26 @@ const plugin = (app: App, namespace: string = '@@modal') => {
   }
   const modal = app.model(namespace, initialState)
 
-  const mutations = modal.mutations(Modal => ({
+  const mutations = modal.mutations({
     show: (name: string, component: React.ComponentType<any>, props: Record<string, any>) => s => {
-      const modals = Modal.get('modals')(s)
+      const modals = s.get('modals')
 
       let updatedModals = modals.filter(m => m.name !== name)
       updatedModals = [ ...updatedModals, { name, component, props, show: true } ]
 
-      return Modal.set('modals', updatedModals)(s)
+      return s.set('modals', updatedModals)
     },
     hide: (name: string) => s => {
-      const modals = Modal.get('modals')(s)
+      const modals = s.get('modals')
       const updatedModals = modals.map(m => {
         if (m.name === name) {
           return { ...m, show: false }
         }
         return m
       })
-      return Modal.set('modals', updatedModals)(s)
+      return s.set('modals', updatedModals)
     }
-  }))
+  })
 
   const mapStateToProps = (state: any) => ({ modals: modal.state.get('modals')(state) })
   const mapDispatchToProps = mutations
@@ -51,11 +51,10 @@ const plugin = (app: App, namespace: string = '@@modal') => {
     )
   }
 
-  app.register(namespace, connect(mapStateToProps, mapDispatchToProps)(ModalComponent))
-
   return {
     state: modal.state,
     mutations,
+    Component: connect(mapStateToProps, mapDispatchToProps)(ModalComponent),
   }
 }
 
