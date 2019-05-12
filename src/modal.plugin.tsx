@@ -6,7 +6,7 @@ export interface ModalConfig {
   name: string
   show: boolean
   component: React.ComponentType<any>
-  props: Record<string, any>
+  props?: Record<string, any>
 }
 
 const plugin = (app: App, namespace: string = '@@modal') => {
@@ -16,7 +16,7 @@ const plugin = (app: App, namespace: string = '@@modal') => {
   const modal = app.model(namespace, initialState)
 
   const mutations = modal.mutations({
-    show: (name: string, component: React.ComponentType<any>, props: Record<string, any>) => s => {
+    show: (name: string, component: React.ComponentType<any>, props?: Record<string, any>) => s => {
       const modals = s.get('modals')
 
       let updatedModals = modals.filter(m => m.name !== name)

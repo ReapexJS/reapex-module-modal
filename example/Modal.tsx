@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 // import { Registered } from '../../src'
-import app, { modal } from '../app'
+import { modal } from './app'
 
 const modalStyle: React.CSSProperties = {
   width: 200,
@@ -39,15 +39,15 @@ const mapDispatchToProps = {
 
 type CounterComponentProps = typeof mapDispatchToProps
 
-const CounterComponent: React.SFC<CounterComponentProps> = props => {
+const ModalComponent: React.SFC<CounterComponentProps> = props => {
   return (
     <>
-      <button onClick={() => props.show('modalA', ModalA, {})}>show modal A</button>
-      <button onClick={() => props.show('modalB', ModalB, {})}>show modal B</button>
+      <button onClick={() => props.show('modalA', ModalA)}>show modal A</button>
+      <button onClick={() => props.show('modalB', ModalB)}>show modal B</button>
     </>
   )
 }
 
-const CounterComponentMemo = React.memo(CounterComponent)
+const ModalComponentMemo = React.memo(ModalComponent)
 
-app.register('counter', connect(null, mapDispatchToProps)(CounterComponentMemo))
+export const ModalButton = connect(null, mapDispatchToProps)(ModalComponentMemo)
