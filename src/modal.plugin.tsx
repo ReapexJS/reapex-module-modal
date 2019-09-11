@@ -1,5 +1,5 @@
-import React from 'react'
 import { App } from 'reapex'
+import React from 'react'
 import { connect } from 'react-redux'
 
 export interface ModalConfig {
@@ -15,7 +15,7 @@ const plugin = (app: App, namespace: string = '@@modal') => {
   }
   const modal = app.model(namespace, initialState)
 
-  const mutations = modal.mutations({
+  const [mutations] = modal.mutations({
     show: (name: string, component: React.ComponentType<any>, props?: Record<string, any>) => s => {
       const modals = s.get('modals')
 
@@ -36,7 +36,7 @@ const plugin = (app: App, namespace: string = '@@modal') => {
     }
   })
 
-  const mapStateToProps = (state: any) => ({ modals: modal.state.get('modals')(state) })
+  const mapStateToProps = (state: any) => ({ modals: modal.selectors.modals(state) })
   const mapDispatchToProps = mutations
 
   type ModalComponentProps = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps
