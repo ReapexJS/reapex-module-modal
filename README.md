@@ -7,7 +7,7 @@ import modalPlugin from 'reapex-plugin-modal'
 const app = new App()
 
 // 1. register the plugin
-const modal = app.plugin(modalPlugin, '@@modals')
+const modal = app.use(modalPlugin, '@@modals')
 
 // 2. add the modal component to your React application root
 <Provider store={store}>
