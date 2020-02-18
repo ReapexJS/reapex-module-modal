@@ -1,6 +1,6 @@
 import { App } from 'reapex'
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 export interface ModalConfig {
   name: string
@@ -11,16 +11,20 @@ export interface ModalConfig {
 
 const plugin = (app: App, namespace: string = '@@modal') => {
   const initialState = {
-    modals: [] as ModalConfig[]
+    modals: [] as ModalConfig[],
   }
   const modal = app.model(namespace, initialState)
 
   const [mutations] = modal.mutations({
-    show: (name: string, component: React.ComponentType<any>, props?: Record<string, any>) => s => {
+    show: (
+      name: string,
+      component: React.ComponentType<any>,
+      props?: Record<string, any>
+    ) => s => {
       const modals = s.get('modals')
 
       let updatedModals = modals.filter(m => m.name !== name)
-      updatedModals = [ ...updatedModals, { name, component, props, show: true } ]
+      updatedModals = [...updatedModals, { name, component, props, show: true }]
 
       return s.set('modals', updatedModals)
     },
@@ -33,19 +37,21 @@ const plugin = (app: App, namespace: string = '@@modal') => {
         return m
       })
       return s.set('modals', updatedModals)
-    }
+    },
+    destroy: (name: string) => s => {
+      const modals = s.get('modals')
+      const updatedModals = modals.filter(m => m.name !== name)
+      return s.set('modals', updatedModals)
+    },
   })
 
-  const mapStateToProps = (state: any) => ({ modals: modal.selectors.modals(state) })
-  const mapDispatchToProps = mutations
+  const ModalComponent = () => {
+    const modals = useSelector(modal.selectors.modals)
 
-  type ModalComponentProps = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps
-
-  const ModalComponent: React.FC<ModalComponentProps> = props => {
     return (
       <div className="reapex-modals">
-        {props.modals.map(m => {
-          return m.show ? <m.component key={m.name} { ...m.props } show={props.show} hide={props.hide} /> : null
+        {modals.map(m => {
+          return m.show ? <m.component key={m.name} {...m.props} /> : null
         })}
       </div>
     )
@@ -54,7 +60,7 @@ const plugin = (app: App, namespace: string = '@@modal') => {
   return {
     state: modal.state,
     mutations,
-    Component: connect(mapStateToProps, mapDispatchToProps)(ModalComponent),
+    Component: ModalComponent,
   }
 }
 

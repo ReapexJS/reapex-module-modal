@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 
 // import { Registered } from '../../src'
 import { modal } from './app'
@@ -19,35 +19,45 @@ const modalStyle: React.CSSProperties = {
   boxShadow: '1px 1px 2px #ccc',
 }
 
-const ModalA: React.FC<{hide: typeof modal.mutations.hide}> = props =>
-  <div className="modal" style={modalStyle}>
-    This is modal A
-    <button onClick={() => props.hide('modalA')}>close</button>
-  </div>
-
-const ModalB: React.FC<{hide: typeof modal.mutations.hide}> = props =>
-  <div className="modal" style={modalStyle}>
-    This is modal B
-    <button onClick={() => props.hide('modalB')}>close</button>
-  </div>
-
-
-const mapDispatchToProps = {
-  show: modal.mutations.show,
-  hide: modal.mutations.hide,
+const ModalA = () => {
+  const dispatch = useDispatch()
+  const hide = React.useCallback(
+    (name: string) => dispatch(modal.mutations.hide(name)),
+    []
+  )
+  return (
+    <div className="modal" style={modalStyle}>
+      This is modal A<button onClick={() => hide('modalA')}>close</button>
+    </div>
+  )
 }
 
-type CounterComponentProps = typeof mapDispatchToProps
+const ModalB = () => {
+  const dispatch = useDispatch()
+  const hide = React.useCallback(
+    (name: string) => dispatch(modal.mutations.hide(name)),
+    []
+  )
+  return (
+    <div className="modal" style={modalStyle}>
+      This is modal B<button onClick={() => hide('modalB')}>close</button>
+    </div>
+  )
+}
 
-const ModalComponent: React.SFC<CounterComponentProps> = props => {
+export const ModalComponent = () => {
+  const dispatch = useDispatch()
+  const show = React.useCallback(
+    (...args: Parameters<typeof modal.mutations.show>) =>
+      dispatch(modal.mutations.show(...args)),
+    []
+  )
   return (
     <>
-      <button onClick={() => props.show('modalA', ModalA)}>show modal A</button>
-      <button onClick={() => props.show('modalB', ModalB)}>show modal B</button>
+      <button onClick={() => show('modalA', ModalA)}>show modal A</button>
+      <button onClick={() => show('modalB', ModalB)}>show modal B</button>
     </>
   )
 }
 
-const ModalComponentMemo = React.memo(ModalComponent)
-
-export const ModalButton = connect(null, mapDispatchToProps)(ModalComponentMemo)
+export const ModalButton = React.memo(ModalComponent)
