@@ -1,6 +1,6 @@
-import { App } from 'reapex'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { App } from 'reapex'
 
 export interface ModalConfig {
   name: string
@@ -18,13 +18,31 @@ const plugin = (app: App, namespace: string = '@@modal') => {
   const [mutations] = modal.mutations({
     show: (
       name: string,
-      component: React.ComponentType<any>,
+      component?: React.ComponentType<any>,
       props?: Record<string, any>
     ) => s => {
       const modals = s.get('modals')
 
       let updatedModals = modals.filter(m => m.name !== name)
-      updatedModals = [...updatedModals, { name, component, props, show: true }]
+      if (component) {
+        updatedModals = [
+          ...updatedModals,
+          { name, component, props, show: true },
+        ]
+      } else {
+        const found = modals.find(m => m.name === name)
+        if (found) {
+          updatedModals = [
+            ...updatedModals,
+            {
+              name,
+              component: component || found.component,
+              props,
+              show: true,
+            },
+          ]
+        }
+      }
 
       return s.set('modals', updatedModals)
     },
@@ -57,10 +75,26 @@ const plugin = (app: App, namespace: string = '@@modal') => {
     )
   }
 
+  const useModal = (name: string) => {
+    const dispatch = useDispatch()
+    const hide = React.useCallback(() => dispatch(mutations.hide(name)), [])
+    const show = React.useCallback(
+      (component?: React.ComponentType<any>, props?: Record<string, any>) =>
+        dispatch(mutations.show(name, component, props)),
+      []
+    )
+    const destroy = React.useCallback(
+      () => dispatch(mutations.destroy(name)),
+      []
+    )
+    return { hide, show, destroy }
+  }
+
   return {
     state: modal.state,
     mutations,
     Component: ModalComponent,
+    useModal,
   }
 }
 
