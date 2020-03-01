@@ -9,12 +9,26 @@ const app = new App()
 // 1. register the plugin
 const modal = app.use(modalPlugin, '@@modals')
 
-// 2. add the modal component to your React application root
+// 2. Create a component to render the modals
+const Modals = () => {
+  const modals = useSelector(modal.selectors.modals)
+
+  return (
+    <div className="reapex-modals">
+      {modals.map(m => {
+        return m.show ? <m.component key={m.name} {...m.props} /> : null
+      })}
+    </div>
+  )
+}
+
+// 3. Render it
 <Provider store={store}>
-  <modal.Component />
+  <Modals />
 </Provider>
 
 // show/hide any component
-store.dispatch(modal.mutations.show('modal1', SomeComponent, props))
-store.dispatch(modal.mutations.hide('modal1'))
+const {show, hide} = modal.useModal('MyDialog')
+dispatch(show(MyDialogComponent, props))
+dispatch(hide('MyDialog'))
 ```

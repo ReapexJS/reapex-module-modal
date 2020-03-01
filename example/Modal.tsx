@@ -56,7 +56,7 @@ export const ModalComponent = () => {
   )
 }
 
-export const ModalHoolsComponent = () => {
+export const ModalHooksComponent = () => {
   const { show } = modal.useModal('modalA')
   return (
     <>

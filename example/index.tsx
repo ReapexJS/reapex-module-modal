@@ -1,9 +1,21 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Provider } from 'react-redux'
+import { Provider, useSelector } from 'react-redux'
 
 import app, { modal } from './app'
-import { ModalButton, ModalHoolsComponent } from './Modal'
+import { ModalButton, ModalHooksComponent } from './Modal'
+
+const Modals = () => {
+  const modals = useSelector(modal.selectors.modals)
+
+  return (
+    <div className="reapex-modals">
+      {modals.map(m => {
+        return m.show ? <m.component key={m.name} {...m.props} /> : null
+      })}
+    </div>
+  )
+}
 
 const store = app.createStore()
 render(
@@ -13,9 +25,9 @@ render(
         <ModalButton />
       </div>
       <div>
-        <ModalHoolsComponent />
+        <ModalHooksComponent />
       </div>
-      <modal.Component />
+      <Modals />
     </>
   </Provider>,
   document.getElementById('root')

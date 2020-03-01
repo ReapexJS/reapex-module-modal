@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { App } from 'reapex'
 
 export interface ModalConfig {
@@ -63,18 +63,6 @@ const plugin = (app: App, namespace: string = '@@modal') => {
     },
   })
 
-  const ModalComponent = () => {
-    const modals = useSelector(modal.selectors.modals)
-
-    return (
-      <div className="reapex-modals">
-        {modals.map(m => {
-          return m.show ? <m.component key={m.name} {...m.props} /> : null
-        })}
-      </div>
-    )
-  }
-
   const useModal = (name: string) => {
     const dispatch = useDispatch()
     const hide = React.useCallback(() => dispatch(mutations.hide(name)), [])
@@ -93,7 +81,7 @@ const plugin = (app: App, namespace: string = '@@modal') => {
   return {
     state: modal.state,
     mutations,
-    Component: ModalComponent,
+    selectors: modal.selectors,
     useModal,
   }
 }
