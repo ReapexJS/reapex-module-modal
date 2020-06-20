@@ -1,17 +1,17 @@
 import React from 'react'
 import { App } from 'reapex'
 
-import modalPlugin from '../src'
+import modalModule from '../src'
 
 const ModalComponent = () => <div></div>
 
-describe('modal plugin', () => {
+describe('modal module', () => {
   let app: App
-  let modal: ReturnType<typeof modalPlugin>
+  let modal: ReturnType<typeof modalModule>
 
   beforeEach(() => {
     app = new App()
-    modal = app.use(modalPlugin, '@@modals')
+    modal = app.use(modalModule, '@@modals')
     app.createStore()
   })
 

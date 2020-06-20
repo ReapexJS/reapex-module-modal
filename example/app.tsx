@@ -1,8 +1,8 @@
 import { App } from 'reapex'
-import modalPlugin from '../src'
+import modalModule from '../src'
 
 const app = new App()
 
-export const modal = app.plugin(modalPlugin, '@@modals')
+export const modal = app.use(modalModule, '@@modals')
 
 export default app

@@ -1,7 +1,7 @@
 {
-  "name": "reapex-plugin-modal",
+  "name": "reapex-module-modal",
   "version": "1.2.0",
-  "description": "reapex modal plugin",
+  "description": "reapex modal module",
   "main": "lib/index.js",
   "scripts": {
     "test": "jest",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ruanyl/reapex-plugin-modal.git"
+    "url": "git+https://github.com/ruanyl/reapex-module-modal.git"
   },
   "keywords": [
     "reapex",
@@ -71,7 +71,7 @@
   "author": "Yulong Ruan <ruanyu1@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ReapexJS/reapex-plugin-modal/issues"
+    "url": "https://github.com/ReapexJS/reapex-module-modal/issues"
   },
-  "homepage": "https://github.com/ReapexJS/reapex-plugin-modal#readme"
+  "homepage": "https://github.com/ReapexJS/reapex-module-modal#readme"
 }

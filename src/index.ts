@@ -1,3 +1,3 @@
-import modalPlugin from './modal.plugin'
+import modal from './modal.module'
 
-export default modalPlugin
+export default modal

@@ -9,7 +9,7 @@ export interface ModalConfig {
   props?: Record<string, any>
 }
 
-const plugin = (app: App, namespace: string = '@@modal') => {
+const logic = (app: App, namespace: string = '@@modal') => {
   const initialState = {
     modals: [] as ModalConfig[],
   }
@@ -86,4 +86,4 @@ const plugin = (app: App, namespace: string = '@@modal') => {
   }
 }
 
-export default plugin
+export default logic

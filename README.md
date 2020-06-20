@@ -1,13 +1,13 @@
-### Reapex modal plugin
+### Reapex modal module
 
 ```typescript
 import { App } from 'reapex'
-import modalPlugin from 'reapex-plugin-modal'
+import modalModule from 'reapex-module-modal'
 
 const app = new App()
 
-// 1. register the plugin
-const modal = app.use(modalPlugin, '@@modals')
+// 1. register the module
+const modal = app.use(modalModule, '@@modals')
 
 // 2. Create a component to render the modals
 const Modals = () => {
