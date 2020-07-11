@@ -1,6 +1,6 @@
 {
   "name": "reapex-module-modal",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "reapex modal module",
   "main": "lib/index.js",
   "scripts": {
@@ -39,7 +39,7 @@
     "react": "~16.8.6",
     "react-dom": "~16.8.6",
     "react-redux": "~7.2.0",
-    "reapex": "0.11.1",
+    "reapex": "1.0.0-beta.5",
     "redux": "^4.0.0",
     "redux-saga": "^1.1.3",
     "reselect": "^4.0.0",
@@ -54,7 +54,7 @@
   "dependencies": {},
   "peerDependencies": {
     "react-redux": ">= 7.0.0",
-    "reapex": ">= 0.8.1"
+    "reapex": ">= 1.0.0-beta.5"
   },
   "prettier": {
     "trailingComma": "es5",

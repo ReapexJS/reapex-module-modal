@@ -2913,12 +2913,7 @@ ignore@^4.0.3, ignore@^4.0.6:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
 
-immutable-state-creator@~1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/immutable-state-creator/-/immutable-state-creator-1.2.3.tgz#df25a6b5d86a7751e6c015f578d6804c57bfee18"
-  integrity sha512-iYzLRgB4yerpV7fzAQtIXDP5xW1YbwmNQruY10PgzqlQPlDlzq4GcUaIZhSkCy3GfSVXDjcyvB9di/cx2LYv1A==
-
-immutable@^4.0.0-rc.12:
+immutable@^4.0.0-rc.1, immutable@^4.0.0-rc.12:
   version "4.0.0-rc.12"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.0.0-rc.12.tgz#ca59a7e4c19ae8d9bf74a97bdf0f6e2f2a5d0217"
   integrity sha512-0M2XxkZLx/mi3t8NVwIm1g8nHoEmM9p9UBl/G9k4+hm0kBgOVdMV/B3CY5dQ8qG8qc80NN4gDV4HQv6FTJ5q7A==
@@ -5227,19 +5222,13 @@ realpath-native@^1.1.0:
   dependencies:
     util.promisify "^1.0.0"
 
-reapex@0.11.1:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/reapex/-/reapex-0.11.1.tgz#08b77e7001e7767118f27fc0abf80528b1299edf"
-  integrity sha512-VWjjDCySHM1CSgnJiEzV8CMSnWv5siAttMEsVYets7Rya8M89GdRn65Ty7f1MeWX3VYms5Zl8XSCuC1r/4mkmw==
+reapex@1.0.0-beta.5:
+  version "1.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/reapex/-/reapex-1.0.0-beta.5.tgz#d6c333c355078e836f9dbfb423cb03702bc45395"
+  integrity sha512-ZIQtoDvlmJwZeDTAvdzvqrSv/xT/4x99JHhk9WHsFmdVxbOcV4ulGBRGIMfzTcU+lttuy7IzUeWuakhkNxzmbw==
   dependencies:
-    immutable-state-creator "~1.2.3"
-    reducer-tools "^1.0.0"
+    immutable "^4.0.0-rc.1"
     redux-immutable "^4.0.0"
-
-reducer-tools@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/reducer-tools/-/reducer-tools-1.0.0.tgz#57a43861f8828b770278024516523ef4c74244c6"
-  integrity sha512-aWRKn2TJQ99cYP2b4Vot9xRwmzuX9W2Y+2mEExm5PqJR/H55vOXsr1id8LwUdmnT7a6NPNpe/dgiNKUBCFPRkw==
 
 redux-immutable@^4.0.0:
   version "4.0.0"
@@ -6244,15 +6233,15 @@ typescript-tuple@^2.2.1:
   dependencies:
     typescript-compare "^0.0.2"
 
+typescript@3.9:
+  version "3.9.6"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.6.tgz#8f3e0198a34c3ae17091b35571d3afd31999365a"
+  integrity sha512-Pspx3oKAPJtjNwE92YS05HQoY7z2SFyOpHo9MqJor3BXAGNaPUs83CuVp9VISFkSjyRfiTpmKuAYGJB7S7hOxw==
+
 typescript@^3.2.4:
   version "3.7.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.5.tgz#0692e21f65fd4108b9330238aac11dd2e177a1ae"
   integrity sha512-/P5lkRXkWHNAbcJIiHPfRoKqyd7bsyCma1hZNUGfn20qm64T6ZBlrzprymeu918H+mB/0rIg2gGK/BXkhhYgBw==
-
-typescript@^3.8.1-rc:
-  version "3.8.1-rc"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.8.1-rc.tgz#f94333c14da70927ccd887be2e91be652a9a09f6"
-  integrity sha512-aOIe066DyZn2uYIiND6fXMUUJ70nxwu/lKhA92QuQzXyC86fr0ywo1qvO8l2m0EnDcfjprYPuFRgNgDj7U2GlQ==
 
 uglify-es@^3.3.4:
   version "3.3.9"

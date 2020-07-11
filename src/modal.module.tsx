@@ -21,7 +21,7 @@ const logic = (app: App, namespace: string = '@@modal') => {
       component?: React.ComponentType<any>,
       props?: Record<string, any>
     ) => s => {
-      const modals = s.get('modals')
+      const modals = s.modals
 
       let updatedModals = modals.filter(m => m.name !== name)
       if (component) {
@@ -44,22 +44,22 @@ const logic = (app: App, namespace: string = '@@modal') => {
         }
       }
 
-      return s.set('modals', updatedModals)
+      return { ...s, modals: updatedModals }
     },
     hide: (name: string) => s => {
-      const modals = s.get('modals')
+      const modals = s.modals
       const updatedModals = modals.map(m => {
         if (m.name === name) {
           return { ...m, show: false }
         }
         return m
       })
-      return s.set('modals', updatedModals)
+      return { ...s, modals: updatedModals }
     },
     destroy: (name: string) => s => {
-      const modals = s.get('modals')
+      const modals = s.modals
       const updatedModals = modals.filter(m => m.name !== name)
-      return s.set('modals', updatedModals)
+      return { ...s, modals: updatedModals }
     },
   })
 
