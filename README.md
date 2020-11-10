@@ -29,6 +29,6 @@ const Modals = () => {
 
 // show/hide any component
 const {show, hide} = modal.useModal('MyDialog')
-dispatch(show(MyDialogComponent, props))
-dispatch(hide('MyDialog'))
+show(MyDialogComponent, props)
+hide()
 ```
